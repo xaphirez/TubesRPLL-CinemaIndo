@@ -4,7 +4,10 @@ class Customer extends Controller{
     
     public function index()
     {
-        
+        $data['judul'] = 'Index Customer';
+        $this->view('templates/header', $data);
+        $this->view('customer/index');
+        $this->view('templates/footer');
     }
 
     public function register()

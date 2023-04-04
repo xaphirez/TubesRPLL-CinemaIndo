@@ -24,13 +24,16 @@
                         <a class="nav-link active" aria-current="page" href="<?=BASEURL;?>/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=BASEURL;?>/about"> About</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/home">Now Playing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=BASEURL;?>/mahasiswa">Mahasiswa</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/home">Upcoming</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/customer">Customer</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
                     </li>
                 </ul>
             </div>
