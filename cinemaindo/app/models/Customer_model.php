@@ -9,8 +9,8 @@ class Customer_model{
         $this->db = new Database;
     }
     
-    /*
-    public function tambahCustomer($data)
+
+    public function tambahDataCustomer($data)
     {
         
         $query = "INSERT INTO user
@@ -28,5 +28,5 @@ class Customer_model{
         return $this->db->rowCount();
         
     }
-    */
+   
 }
