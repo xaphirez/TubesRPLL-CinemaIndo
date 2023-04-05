@@ -28,7 +28,7 @@
                         <div class="text-center pt-4 pb-2">
                         <button type="submit" class="btn-color btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">Register</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
