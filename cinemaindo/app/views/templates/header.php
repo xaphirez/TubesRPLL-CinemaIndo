@@ -25,17 +25,25 @@
                         <a class="nav-link active" aria-current="page" href="<?=BASEURL;?>/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/home">Now Playing</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/playing">Now Playing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/home">Upcoming</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/upcoming">Upcoming</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
-                    </li>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account</a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <!-- Kasih If Else login nanti -->
+                                    <!-- Bawah jika udah login -->
+                                    <li><a class="dropdown-item" href="#">Account Details</a></li> 
+                                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
             </div>
         </div>
