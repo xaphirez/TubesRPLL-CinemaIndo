@@ -27,4 +27,12 @@ class Customer extends Controller{
         $this->view('customer/login');
         $this->view('templates/footer');
     }
+
+    public function regis()
+    {
+        if($this->model('Customer_model')->tambahDataCustomer($_POST)>0){
+            header('Location: '. BASEURL . '/customer/login');
+            exit;
+        }
+    }
 }
