@@ -6,7 +6,7 @@
                 <h2 class="card-title text-center">R E G I S T E R</h2>
             </div>
                 <div class="container">
-                    <form>
+                    <form action="<?= BASEURL; ?>/customer/regis" method="POST">
                         <div class="d-flex flex-row align-items-center mb-0 pt-2">
                         <div class="form-outline flex-fill mb-0">
                             <label for="email" class="form-label">Email</label>
