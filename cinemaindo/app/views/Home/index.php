@@ -1,61 +1,94 @@
+<div class="bg-secondary text-white">
 <!-- Hero section -->
-<section class="hero d-flex align-items-center">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h1>Welcome to Cinema</h1>
-                <p class="lead">Watch the latest movies on the big screen.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </div>
-            <div class="col-md-6">
-                <img src="https://via.placeholder.com/500x300" class="img-fluid" alt="Cinema">
+<section class="d-flex col-xl-12 py-4">
+        <div class="carousel-tiem active ms-auto me-auto">
+            <img src="<?= BASEURL; ?>/img/JW4.webp" alt="Jhon Wick 4" class="d-block w-100 py-5">
+            <div class="carousel-caption d-none d-mb-block">
+                <h5>bla bla bla</h5>
+                <p> bla bla bla</p>
+                <p><a href="#" class ="btn btn-warning"> bla bla</a></p>
             </div>
         </div>
-    </div>
 </section>
 
-
+<div class="card mb-3 bg-dark card align-items-center text-light mx-auto" style="max-width: 1100px;">
+  <h1>Now Playing</h1>
+</div>
 <!-- Movie List -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+    <div class="row">   
+        <div class="col-md-4 p-3 py-4">
+            <div class="card mb-4 box-shadow" >
+                <img class="card-img-top" src="<?= BASEURL; ?>/img/TSMB.webp" alt="The Super Mario Bros" height="300" class="img-fluid">
                 <div class="card-body">
-                    <h5 class="card-title">Movie 1</h5>
-                    <p class="card-text">A description of the movie.</p>
+                    <h5 class="card-title">The Super Mario Bros. Movie</h5><br>
                     <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">Release date</small>
+                        <small class="text-muted">5 April 2023</small>
                         <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 p-3 py-4">
             <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+                <img class="card-img-top" src="<?= BASEURL; ?>/img/SNT.webp" alt="Suzume no Tojimari" height="300" class="img-fluid">
                 <div class="card-body">
-                    <h5 class="card-title">Movie 2</h5>
-                    <p class="card-text">A description of the movie.</p>
+                    <h5 class="card-title">Suzume no Tojimari</h5><br>
                     <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">Release date</small>
+                        <small class="text-muted">8 Maret 2023</small>
                         <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 p-3 py-4">
             <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+                <img class="card-img-top" src="<?= BASEURL; ?>/img/WM.webp" alt="Waktu Maghrib" height="300" class="img-fluid">
                 <div class="card-body">
-                    <h5 class="card-title">Movie 3</h5>
-                    <p class="card-text">A description of the movie.</p>
+                    <h5 class="card-title">Waktu Maghrib</h5><br>
                     <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">Release date</small>
+                        <small class="text-muted">9 Februari 2023</small>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 p-3 py-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="<?= BASEURL; ?>/img/DD.jpg" alt="Dungeons & Dragons: Honor Among Thieves" height="300" class="img-fluid">
+                <div class="card-body">
+                    <h5 class="card-title">Dungeons & Dragons: Honor Among Thieves</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">28 Maret 2023</small>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 p-3 py-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="<?= BASEURL; ?>/img/Shazam.jpg" alt="Shazam! Fury of the Gods" height="300" class="img-fluid">
+                <div class="card-body">
+                    <h5 class="card-title">Shazam! Fury of the Gods</h5><br>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">15 Maret 2023</small>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 p-3 py-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="<?= BASEURL; ?>/img/Tulah.jpg" alt="Tulah 613" height="300" class="img-fluid">
+                <div class="card-body">
+                    <h5 class="card-title">Tulah 613</h5><br>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">30 Maret 2023</small>
                         <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
