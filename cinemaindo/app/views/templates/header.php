@@ -30,16 +30,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASEURL; ?>/upcoming">Upcoming</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
+                    </li>
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account</a>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <!-- Kasih If Else login nanti -->
-                                    <!-- Bawah jika udah login -->
-                                    <li><a class="dropdown-item" href="#">Account Details</a></li> 
-                                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                                <ul class="dropdown-menu dropdown-menu-dark"
+                                    aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
