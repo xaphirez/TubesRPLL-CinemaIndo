@@ -1,6 +1,7 @@
 <?php
 
 class Film extends Controller{
+    
     public function index()
     {
         $film_model = $this->model('Film_model');
