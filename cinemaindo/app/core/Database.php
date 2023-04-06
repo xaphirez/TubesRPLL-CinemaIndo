@@ -9,6 +9,8 @@ class Database {
     private $dbh;
     private $stmt;
 
+    private static $instance = null;
+
     public function __construct()
     {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
@@ -23,6 +25,13 @@ class Database {
         } catch(PDOException $e){
             die($e->getMessage());
         }
+    }
+
+    public static function getInstance() {
+        if (!self::$instance) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
     }
 
     public function query($query)

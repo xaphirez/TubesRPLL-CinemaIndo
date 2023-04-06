@@ -30,12 +30,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASEURL; ?>/upcoming">Upcoming</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
-                    </li>
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
