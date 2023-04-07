@@ -22,7 +22,7 @@ class Customer extends Controller{
     public function home()
     {
         $this->view('templates/header');
-        $this->view('customer/');
+        $this->view('customer/home');
         $this->view('templates/footer');
     }
 
