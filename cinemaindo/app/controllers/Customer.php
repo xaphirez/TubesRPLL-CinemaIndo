@@ -44,7 +44,7 @@ class Customer extends Controller{
                     $_SESSION['telepon'] = $customer['telepon'];
 
                     // redirect ke halaman utama
-                    header('Location: ' . BASEURL . '/customer/index');
+                    header('Location: ' . BASEURL . '/customer/home');
                     exit;
                 } else {
                     $data['error'] = 'Password salah';
