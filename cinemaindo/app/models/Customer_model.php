@@ -10,7 +10,7 @@ class Customer_model{
     }
     
 
-    public function tambahDataCustomer($data)
+    public function registerUser($data)
     {
         
         $query = "INSERT INTO user
@@ -27,6 +27,13 @@ class Customer_model{
 
         return $this->db->rowCount();
         
+    }
+
+    public function getUserByEmail($email)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email=:email');
+        $this->db->binds(':email', $email);
+        return $this->db->resultSet()[0];
     }
    
 }
