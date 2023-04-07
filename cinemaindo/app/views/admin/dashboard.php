@@ -1,5 +1,4 @@
-<body>
-    <!-- Navbar -->
+<div class="bg-secondary text-white">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Admin Dashboard</a>
@@ -22,9 +21,8 @@
             </div>
         </div>
     </nav>
-
-    <!-- Main Content -->
     <div class="container mt-4">
         <h1>Welcome to the Admin Dashboard</h1>
         <p class="lead">Use the navigation above to add a film or view all users.</p>
     </div>
+</div>

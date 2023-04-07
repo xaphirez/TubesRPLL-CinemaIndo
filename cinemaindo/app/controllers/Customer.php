@@ -84,4 +84,12 @@ class Customer extends Controller{
         $this->view('customer/register', $data);
         $this->view('templates/footer');
     }
+    
+    public function Profil()
+    {
+        $data['judul'] = 'Profil';
+        $this->view('templates/templates_customer/header_customer', $data);
+        $this->view('customer/Profil');
+        $this->view('templates/templates_customer/footer_customer');
+    }
 }
