@@ -1,7 +1,7 @@
-<div class="vh-100 bg-secondary";>
+<div class="bg-secondary vh-100";>
     <div class="container py-5 text-center h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-4 pt-3">
+            <div class="col-xl-4">
                 <div class="card p-3 bg-dark text-light" style="border-radius: 1rem;">
                     <div class="card-body-login pt-5 text-center">
                     <img src="<?= BASEURL; ?>/img/Cindo.png" alt="Cinema Indo" width="100" class="rounded-circle img-thumbnail shadow-sm mb-3">

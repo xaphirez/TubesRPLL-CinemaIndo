@@ -25,10 +25,10 @@
                         <a class="nav-link active" aria-current="page" href="<?=BASEURL;?>/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/playing">Now Playing</a>
+                        <a class="nav-link" href="#Now_Playing">Now Playing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL; ?>/upcoming">Upcoming</a>
+                        <a class="nav-link" href="#Coming_Soon">Up Coming</a>
                     </li>
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">

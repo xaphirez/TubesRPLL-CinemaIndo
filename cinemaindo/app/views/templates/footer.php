@@ -1,4 +1,4 @@
-<footer class="bg-dark text-white">
+<footer class="bg-dark text-white py">
     <div class="container">
         <div class="row">
             <div class="text-center p-3">
@@ -14,5 +14,3 @@
 </script>
 <script src="<?=BASEURL; ?>/js/bootstrap.js"></script>
 </body>
-
-</html>

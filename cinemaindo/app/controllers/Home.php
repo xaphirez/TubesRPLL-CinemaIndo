@@ -9,4 +9,12 @@ class Home extends Controller{
         $this->view('Home/index');
         $this->view('templates/footer');
     }
+
+    public function BeforeLogin()
+    {
+        $data['judul'] = 'BeforeLogin';
+        $this->view('templates/templates_customer/header_customer', $data);
+        $this->view('Home/BeforeLogin');
+        $this->view('templates/templates_customer/footer_customer');
+    }
 }
