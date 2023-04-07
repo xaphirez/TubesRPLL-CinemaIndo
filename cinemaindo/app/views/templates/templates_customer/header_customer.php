@@ -38,7 +38,7 @@
                                         <a class="nav-link" href="<?= BASEURL; ?>/customer/Profil">Profil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href=" ">History</a>
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/History">History</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href=" ">Log Out</a>

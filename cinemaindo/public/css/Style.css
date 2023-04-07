@@ -1,11 +1,14 @@
 .card-title {
     font-weight: 700;
 }
+
 .btn{
     width: 100%;
     color; #000;
     border-radius: 10px;
 }
-.btn-color{
+
+.btn-color
+{
     background-color: #000;
 }
