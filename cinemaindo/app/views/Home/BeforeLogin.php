@@ -12,7 +12,7 @@
 </section>
 
 <!-- Now Playing -->
-<div class="card mb-3 bg-dark card align-items-center text-light mx-auto" style="max-width: 1100px;">
+<div class="card mb-3 bg-dark card align-items-center text-light mx-auto" style="max-width: 1100px;" id="Now_Playing">
   <h1>Now Playing</h1>
 </div>
 <div class="container">
@@ -93,7 +93,7 @@
 </div>
 
 <!-- Up Coming -->
-<div class="card mb-3 bg-dark card align-items-center text-light mx-auto" style="max-width: 1100px;">
+<div class="card mb-3 bg-dark card align-items-center text-light mx-auto" style="max-width: 1100px;" id="Coming_Soon">
     <h1>Coming Soon</h1>
 </div>
 <div class="container">
