@@ -6,6 +6,9 @@ class Film extends Controller{
     {
         $film_model = $this->model('Film_model');
         $data['films'] = $film_model->getAllFilm();
-        $this->view('film/index', $data);
+
+        $this->view('templates/header');
+        $this->view('film/NowPlaying', $data);
+        $this->view('templates/footer');
     }
 }
