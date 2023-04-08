@@ -25,7 +25,7 @@
                         <a class="nav-link active" aria-current="page" href="<?=BASEURL;?>/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Now_Playing">Now Playing</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/Film/NowPlaying">Now Playing</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Coming_Soon">Up Coming</a>
