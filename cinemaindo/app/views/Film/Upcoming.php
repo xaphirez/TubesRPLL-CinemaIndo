@@ -1,17 +1,17 @@
 <div class="position-relative mt-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <?php $nowPlayingChuncks = array_chunk($data['nowPlayings'], 3); ?>
-            <?php foreach ($nowPlayingChuncks as $key => $nowPlayingChunck) : ?>
+            <?php $upcomingChuncks = array_chunk($data['upcomings'], 3); ?>
+            <?php foreach ($upcomingChuncks as $key => $upcomingChunck) : ?>
             <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>">
                 <div class="row">
-                    <?php foreach ($nowPlayingChunck as $nowPlaying) : ?>
+                    <?php foreach ($upcomingChunck as $upcoming) : ?>
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="data:image/jpeg;base64,<?= base64_encode($nowPlaying['gambar']) ?>"
-                                class="card-img-top" alt="<?= $nowPlaying['nama_film'] ?>">
+                            <img src="data:image/jpeg;base64,<?= base64_encode($upcoming['gambar']) ?>"
+                                class="card-img-top" alt="<?= $upcoming['nama_film'] ?>">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $nowPlaying['nama_film'] ?></h5>
+                                <h5 class="card-title"><?= $upcoming['nama_film'] ?></h5>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="text-center p-3">
-                <a>© 2023 <span class="text-danger">Cinema</span>indo. All rights reserved.</a>
+                <a>ï¿½ 2023 <span class="text-danger">Cinema</span>indo. All rights reserved.</a>
             </div>
         </div>
     </div>
