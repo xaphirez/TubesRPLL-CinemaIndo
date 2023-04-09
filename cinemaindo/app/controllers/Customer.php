@@ -21,9 +21,9 @@ class Customer extends Controller{
 
     public function home()
     {
-        $this->view('templates/header');
+        $this->view('templates/templates_customer/header_customer');
         $this->view('customer/home');
-        $this->view('templates/footer');
+        $this->view('templates/templates_customer/footer_customer');
     }
 
     public function login()

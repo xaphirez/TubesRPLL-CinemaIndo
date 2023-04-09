@@ -28,7 +28,7 @@
                         <a class="nav-link" href="<?= BASEURL; ?>/Film/NowPlaying">Now Playing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Coming_Soon">Up Coming</a>
+                        <a class="nav-link" href="<?= BASEURL; ?>/Film/Upcoming">Up Coming</a>
                     </li>
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
