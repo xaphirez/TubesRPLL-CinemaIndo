@@ -1,5 +1,4 @@
 <?php
-
 class Customer extends Controller{
     
     public function index()
@@ -21,13 +20,20 @@ class Customer extends Controller{
 
     public function home()
     {
-        $this->view('templates/templates_customer/header_customer');
+        if (!isset($_SESSION['id_user'])) {
+            // redirect ke halaman login jika user belum login
+            header('Location: ' . BASEURL . '/customer/login');
+            exit;
+        }
+
+        $this->view('templates/header');
         $this->view('customer/home');
-        $this->view('templates/templates_customer/footer_customer');
+        $this->view('templates/footer');
     }
 
     public function login()
     {
+        $data = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -37,16 +43,23 @@ class Customer extends Controller{
             $customer = $customerModel->getUserByEmail($email);
             if ($customer) {
                 if (password_verify($password, $customer['password'])) {
-                    // simpan data user ke session
-                    $_SESSION['id_user'] = $customer['id'];
+                    // mulai sesi jika belum ada sesi yang aktif
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    
+                    $_SESSION['id_user'] = $customer['id_user'];
                     $_SESSION['email'] = $customer['email'];
-                    $_SESSION['nama_user'] = $customer['nama'];
+                    $_SESSION['nama_user'] = $customer['nama_user'];
                     $_SESSION['telepon'] = $customer['telepon'];
+
+                    //set is_logged_in menjadi true
+                    $data['is_logged_in'] = true;
 
                     // redirect ke halaman utama
                     header('Location: ' . BASEURL . '/customer/home');
                     exit;
-                } else {
+                } else {    
                     $data['error'] = 'Password salah';
                 }
             } else {
@@ -58,6 +71,8 @@ class Customer extends Controller{
         $this->view('customer/login', $data);
         $this->view('templates/footer');
     }
+
+
 
     public function regis()
     {
@@ -85,19 +100,27 @@ class Customer extends Controller{
         $this->view('templates/footer');
     }
     
-    public function Profil()
+    public function profile()
     {
-        $data['judul'] = 'Profil';
-        $this->view('templates/templates_customer/header_customer', $data);
-        $this->view('customer/Profil');
-        $this->view('templates/templates_customer/footer_customer');
+        $data['judul'] = 'Profile';
+        $this->view('templates/header', $data);
+        $this->view('customer/profile');
+        $this->view('templates/header');
     }
 
     public function History()
     {
         $data['judul'] = 'History';
-        $this->view('templates/templates_customer/header_customer', $data);
+        $this->view('templates/header', $data);
         $this->view('customer/History');
-        $this->view('templates/templates_customer/footer_customer');
+        $this->view('templates/footer');
+    }
+
+    public function logout()
+    {
+        session_unset();
+        session_destroy();
+        header('Location: ' . BASEURL . '/customer/login');
+        exit;
     }
 }

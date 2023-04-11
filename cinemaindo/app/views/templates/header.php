@@ -1,3 +1,13 @@
+<?php
+    // periksa apakah session id_user telah diset atau belum
+    session_start();
+    if (isset($_SESSION['id_user'])) {
+        $is_logged_in = true;
+    } else {
+        $is_logged_in = false;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +24,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?= BASEURL;?>/home"><span class="text-danger">Cinema</span>Indo</a>
+            <a class="navbar-brand" href="<?= BASEURL;?>/customer/index"><span class="text-danger">Cinema</span>Indo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,19 +42,31 @@
                     </li>
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
+                            <?php if (isset($is_logged_in) && $is_logged_in): ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                                 <ul class="dropdown-menu dropdown-menu-dark"
                                     aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/profile">Profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/history">History</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/logout">Logout</a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
+                            </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </ul>
