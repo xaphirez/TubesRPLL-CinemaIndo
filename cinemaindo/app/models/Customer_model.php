@@ -35,5 +35,12 @@ class Customer_model{
         $this->db->binds(':email', $email);
         return $this->db->resultSet()[0];
     }
+
+    public function getUserById($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_user=:id_user');
+        $this->db->binds(':id_user', $id);
+        return $this->db->resultSet()[0];
+    }      
    
 }

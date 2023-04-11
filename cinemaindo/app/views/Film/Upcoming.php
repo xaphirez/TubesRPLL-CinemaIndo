@@ -1,4 +1,4 @@
-<div class="position-relative mt-5">
+<div class="position-relative bg-secondary">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php $upcomingChuncks = array_chunk($data['upcomings'], 3); ?>
@@ -9,7 +9,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <img src="data:image/jpeg;base64,<?= base64_encode($upcoming['gambar']) ?>"
-                                class="card-img-top" alt="<?= $upcoming['nama_film'] ?>">
+                                class="card-img-top" alt="<?= $upcoming['nama_film'] ?>" width="700" height="700">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $upcoming['nama_film'] ?></h5>
                             </div>
