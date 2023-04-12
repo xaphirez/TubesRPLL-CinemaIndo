@@ -1,6 +1,6 @@
 <?php
     // periksa apakah session id_user telah diset atau belum
-    session_start();
+    session_name("customer_session");
     if (isset($_SESSION['id_user'])) {
         $is_logged_in = true;
     } else {
@@ -43,6 +43,9 @@
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
                             <?php if (isset($is_logged_in) && $is_logged_in): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Beli Tiket</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
@@ -60,8 +63,17 @@
                                 </ul>
                             </li>
                             <?php else: ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= BASEURL; ?>/customer/login">Login as Customer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= BASEURL; ?>/admin/login">Login as Admin</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= BASEURL; ?>/customer/register">Register</a>
