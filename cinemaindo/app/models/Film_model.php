@@ -8,7 +8,7 @@ class Film_model{
         $this->db = Database::getInstance();
     }
 
-    public function getAllFilm() {
+    public function getAllFilms() {
         $query = "SELECT * FROM film";
         $this->db->query($query);
         return $this->db->resultSet();
@@ -26,5 +26,13 @@ class Film_model{
         $query = "SELECT * FROM film WHERE status = 'upcoming'";
         $this->db->query($query);
         return $this->db->resultSet();
+    }
+
+    public function getFilmDetailById($id)
+    {
+        $query = "SELECT * FROM film WHERE id = :id";
+        $this->db->query($query);
+        $this->db->binds('id', $id);
+        return $this->db->single();
     }
 }

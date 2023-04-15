@@ -13,6 +13,8 @@
                                     class="card-img-top" alt="<?= $nowPlaying['nama_film'] ?>" width="700" height="700">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $nowPlaying['nama_film'] ?></h5>
+                                    <a href="<?= BASEURL ?>/film/detail/<?= $nowPlaying['id'] ?>"
+                                        class="btn btn-primary">Detail</a>
                                 </div>
                             </div>
                         </div>
