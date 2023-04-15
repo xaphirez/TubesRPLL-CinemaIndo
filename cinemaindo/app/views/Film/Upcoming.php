@@ -12,6 +12,8 @@
                                 class="card-img-top" alt="<?= $upcoming['nama_film'] ?>" width="700" height="700">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $upcoming['nama_film'] ?></h5>
+                                <a href="<?= BASEURL ?>/film/detail/<?= $upcoming['id'] ?>"
+                                    class="btn btn-primary">Detail</a>
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,7 @@
                         <ul class="navbar-nav">
                             <?php if (isset($is_logged_in) && $is_logged_in): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Beli Tiket</a>
+                                <a class="nav-link" href="<?= BASEURL; ?>/sesi/index">Beli Tiket</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
