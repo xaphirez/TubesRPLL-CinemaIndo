@@ -13,8 +13,6 @@ class Sesi extends Controller{
         $this->screenModel = $this->model('Screen_model');
     }
 
-
-
     public function index()
     {
         // Mengambil semua data sesi dari model
@@ -35,6 +33,20 @@ class Sesi extends Controller{
 
         $this->view('templates/header');
         $this->view('sesi/index', $data);
+        $this->view('templates/footer');
+    }
+
+    public function beliTiket($id)
+    {
+        $sesiID = $this->sesiModel->getSesiByID($id);
+
+        // Mengirim data ke view
+        $data = [
+            'sesiID' => $sesiID
+        ];
+
+        $this->view('templates/header');
+        $this->view('transaksi/beli_tiket', $data);
         $this->view('templates/footer');
     }
 }
