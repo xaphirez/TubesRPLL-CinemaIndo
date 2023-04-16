@@ -13,6 +13,8 @@
                             <th scope="col">Screen</th>
                             <th scope="col">Jam Mulai</th>
                             <th scope="col">Jam Selesai</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Beli Tiket</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +29,9 @@
                             <td class="align-middle"><?= $sesi['screen_number']; ?></td>
                             <td class="align-middle"><?= $sesi['waktu_mulai']; ?></td>
                             <td class="align-middle"><?= $sesi['waktu_selesai']; ?></td>
+                            <td class="align-middle"><?= $sesi['harga']; ?></td>
+                            <td class="align-middle"><a href="<?= BASEURL ?>/transaksi/beli_tiket/<?= $sesi['id']; ?>"
+                                    class="btn btn-primary">Beli Tiket</a></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
