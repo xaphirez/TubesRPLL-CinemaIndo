@@ -18,7 +18,7 @@ class Sesi_model{
 
     public function getSesi()
     {
-        $this->db->query('SELECT s.tanggal_mulai, s.tanggal_selesai, f.nama_film, f.gambar, sc.screen_number, s.waktu_mulai, s.waktu_selesai, s.harga 
+        $this->db->query('SELECT s.id, s.tanggal_mulai, s.tanggal_selesai, f.nama_film, f.gambar, sc.screen_number, s.waktu_mulai, s.waktu_selesai, s.harga 
                         FROM sesi s 
                         JOIN film f ON s.id_film = f.id 
                         JOIN screen sc ON s.id_screen = sc.id');

@@ -35,18 +35,4 @@ class Sesi extends Controller{
         $this->view('sesi/index', $data);
         $this->view('templates/footer');
     }
-
-    public function beliTiket($id)
-    {
-        $sesiID = $this->sesiModel->getSesiByID($id);
-
-        // Mengirim data ke view
-        $data = [
-            'sesiID' => $sesiID
-        ];
-
-        $this->view('templates/header');
-        $this->view('transaksi/beli_tiket', $data);
-        $this->view('templates/footer');
-    }
 }

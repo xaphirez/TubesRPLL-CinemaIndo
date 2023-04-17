@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost/TubesRPLL/cinemaindo/public');
+define('BASEURL', 'http://localhost/cinemaindo/cinemaindo/public');
 
 //DB
 

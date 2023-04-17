@@ -1,21 +1,61 @@
 <?php
 
 class Transaksi extends Controller{
-    // di dalam TransaksiController.php
+    protected $sesiModel;
+    protected $filmModel;
+    protected $screenModel;
 
-    public function beliTiket($sesiId)
+    public function __construct() 
     {
-        // cek apakah user sudah login atau belum
-        if (!$this->isLoggedIn()) {
-            // jika belum, redirect ke halaman login
-            header('Location: ' . BASEURL . '/user/login');
-            exit;
-        }
+        $this->sesiModel = $this->model('Sesi_model');
+        $this->filmModel = $this->model('Film_model');
+        $this->screenModel = $this->model('Screen_model');
+    }
 
+    public function index()
+    {
+        // Mengambil semua data sesi dari model
+        $sesi = $this->sesiModel->getSesi();
+            
+        // Mengambil data film dari model
+        $films = $this->filmModel->getAllFilms();
+
+        // Mengambil data screen dari model
+        $screens = $this->screenModel->getAllScreens();
+
+        // Mengirim data ke view
+        $data = [
+            'sesi' => $sesi,
+            'films' => $films,
+            'screens' => $screens
+        ];
+
+        $this->view('templates/header');
+        $this->view('sesi/index', $data);
+        $this->view('templates/footer');
+    }
+
+    public function beli_tiket($sesi_id)
+    {
         // dapatkan data sesi berdasarkan ID sesi
-        $sesi = $this->model('Sesi')->getSesiById($sesiId);
+        $sesi = $this->model('Sesi_model')->getSesiById($sesi_id);
+
+        // Mengambil data film dari model
+        $films = $this->filmModel->getAllFilms();
+
+        // Mengambil data screen dari model
+        $screens = $this->screenModel->getAllScreens();
+
+        // Mengirim data ke view
+        $data = [
+            'sesi' => $sesi,
+            'films' => $films,
+            'screens' => $screens
+        ];
 
         // tampilkan halaman pembelian tiket
-        $this->view('transaksi/beli_tiket', ['sesi' => $sesi]);
+        $this->view('templates/header');
+        $this->view('transaksi/beli_tiket', $data);
+        $this->view('templates/footer');
     }
 }
