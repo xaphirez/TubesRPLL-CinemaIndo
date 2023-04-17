@@ -8,7 +8,6 @@ class Customer_model{
     {
         $this->db = Database::getInstance();
     }
-    
 
     public function registerUser($data)
     {
@@ -41,6 +40,14 @@ class Customer_model{
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_user=:id_user');
         $this->db->binds(':id_user', $id);
         return $this->db->resultSet()[0];
-    }      
-   
+    }
+
+    public function updateUser($data)
+    {
+        $this->db->query('UPDATE ' . $this->table . ' SET nama_user=:nama_user, telepon=:telepon WHERE id_user=:id_user');
+        $this->db->binds(':id_user', $data['id_user']);
+        $this->db->binds(':nama_user', $data['nama_user']);
+        $this->db->binds(':telepon', $data['telepon']);
+        return $this->db->execute();
+    }
 }
