@@ -18,7 +18,4 @@ class Transaksi extends Controller{
         // tampilkan halaman pembelian tiket
         $this->view('transaksi/beli_tiket', ['sesi' => $sesi]);
     }
-
-
-    
 }

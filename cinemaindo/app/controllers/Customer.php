@@ -102,10 +102,13 @@ class Customer extends Controller{
     
     public function profile()
     {
+        $userModel = $this->model('Customer_model');
+        $user = $userModel->getUserById($_SESSION['id_user']);
+        $data['user'] = $user;
         $data['judul'] = 'Profile';
         $this->view('templates/header', $data);
-        $this->view('customer/profile');
-        $this->view('templates/header');
+        $this->view('customer/profile', $data);
+        $this->view('templates/footer');
     }
 
     public function History()
@@ -115,6 +118,34 @@ class Customer extends Controller{
         $this->view('customer/History');
         $this->view('templates/footer');
     }
+
+    public function editprofil()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $userModel = $this->model('Customer_model');
+            $data = [
+                'id_user' => $_SESSION['id_user'],
+                'nama_user' => $_POST['nama_user'],
+                'telepon' => $_POST['telepon']
+            ];
+            if ($userModel->updateUser($data) > 0) {
+                $_SESSION['success_message'] = 'Data profile berhasil diupdate.';
+                header('Location: ' . BASEURL . '/customer/profile');
+                exit;
+            } else {
+                $_SESSION['error_message'] = 'Data profile gagal diupdate.';
+                header('Location: ' . BASEURL . '/customer/profile');
+                exit;
+            }
+        }
+
+        $data['judul'] = 'editprofil';
+        $this->view('templates/header', $data);
+        $this->view('customer/editprofil', $data);
+        $this->view('templates/footer');
+    }
+
+
 
     public function logout()
     {
