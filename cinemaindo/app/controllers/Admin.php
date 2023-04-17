@@ -1,6 +1,16 @@
 <?php
 
 class Admin extends Controller{
+    protected $sesiModel;
+    protected $filmModel;
+    protected $screenModel;
+
+    public function __construct() 
+    {
+        $this->sesiModel = $this->model('Sesi_model');
+        $this->filmModel = $this->model('Film_model');
+        $this->screenModel = $this->model('Screen_model');
+    }
 
     public function index()
     {
@@ -83,5 +93,54 @@ class Admin extends Controller{
         session_destroy();
         header('Location: ' . BASEURL . '/admin/login');
         exit;
+    }
+
+    public function addSession()
+    {
+        // Cek apakah user sudah login atau belum
+        // if (!isset($_SESSION['user'])) {
+        //     header('Location: ' . BASEURL . '/auth/login');
+        //     exit;
+        // }
+
+        // Panggil model Film dan Screen
+        $filmModel = $this->model('Film_model');
+        $screenModel = $this->model('Screen_model');
+
+        // Ambil data film dan screen dari model
+        $data['nowPlayings'] = $filmModel->getAllFilmNowPlaying();
+        $data['screens'] = $screenModel->getAllScreens();
+
+        // Jika ada data yang dikirim melalui method POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Panggil model Session
+            $sessionModel = $this->model('Sesi_model');
+
+            // Ambil data dari form
+
+            $data = [
+                'filmId' => $_POST['film'],
+                'screenId' => $_POST['screen'],
+                'tanggalMulai' => $_POST['tanggal_mulai'],
+                'tanggalSelesai' => $_POST['tanggal_selesai'],
+                'jamMulai' => $_POST['waktu_mulai'],
+                'jamSelesai' => $_POST['waktu_selesai'],
+                'harga' => $_POST['harga']
+            ];
+
+            if ($sessionModel->addSession($data)) {
+                // Jika berhasil, redirect ke halaman admin
+                header('Location: ' . BASEURL . '/admin');
+                exit;
+            } else {
+                $error = 'Terjadi kesalahan saat menambahkan sesi!';
+            }
+
+            // Tampilkan halaman form penambahan sesi jika method request adalah GET
+            
+        }
+        $this->view('templates_admin/header');
+        $this->view('admin/addSession', $data);
+        $this->view('templates/footer');
     }
 }

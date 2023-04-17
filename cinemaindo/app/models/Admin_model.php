@@ -39,5 +39,6 @@ class Admin_model{
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_admin=:id_admin');
         $this->db->binds(':id_admin', $id);
         return $this->db->resultSet()[0];
-    }      
+    }
+
 }

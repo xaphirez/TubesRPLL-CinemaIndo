@@ -48,4 +48,14 @@ class Film extends Controller{
         $this->view('film/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function AddSession() {
+        $film_model = $this->model('Film_model');
+        $data['nowPlayings'] = $film_model->getAllFilmNowPlaying();
+
+        foreach($data['nowPlayings'] as &$nowPlaying) {
+            $film_detail = $film_model->getFilmDetailById($nowPlaying['id']);
+            $nowPlaying['detail'] = $film_detail;
+        }
+    }
 }
