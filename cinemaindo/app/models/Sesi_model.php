@@ -12,7 +12,7 @@ class Sesi_model{
     {
         $query = "SELECT * FROM sesi WHERE id = :id";
         $this->db->query("$query");
-        $this->db->binds('id', $id);
+        $this->db->binds(':id', $id);
         return $this->db->single();
     }
 

@@ -9,44 +9,51 @@ class Transaksi_model{
         $this->db = Database::getInstance();
     }
 
-    public function buy_tiket($data)
+    public function tambahTransaksi($data)
     {
-        // Ambil data harga tiket dan nomor kursi dari database
-        $query = "SELECT harga_tiket, no_kursi FROM sesi WHERE id = :id_sesi";
+        $query = "INSERT INTO transaksi
+                    VALUE 
+                    ('', :tanggal_transaksi, :no_kursi, :total, :no_tiket, :status_transaksi, :id_user, :id_sesi)";
+
         $this->db->query($query);
-        $this->db->binds('id_sesi', $data['id_sesi']);
-        $result = $this->db->single();
+        $this->db->binds(':tanggal_transaksi', $data['tanggalTransaksi']);
+        $this->db->binds(':no_kursi', $data['noKursi']);
+        $this->db->binds(':total', $data['Total']);
+        $this->db->binds(':no_tiket', $data['NoTiket']);
+        $this->db->binds(':status_transaksi', $data['status']);
+        $this->db->binds(':id_user', $data['UserID']);
+        $this->db->binds(':id_sesi', $data['SesiID']);
+        
+        $this->db->execute();
 
-        // Hitung total harga tiket
-        $total_harga = $result['harga_tiket'] * $data['jumlah_tiket'];
-
-        // Cek apakah nomor kursi sudah ada di database
-        $query = "SELECT COUNT(*) AS count_kursi FROM transaksi WHERE id_sesi = :id_sesi AND no_kursi = :no_kursi";
-        $this->db->query($query);
-        $this->db->binds('id_sesi', $data['id_sesi']);
-        $this->db->binds('no_kursi', $data['no_kursi']);
-        $count_kursi = $this->db->single()['count_kursi'];
-
-        // Jika nomor kursi belum terpakai, masukkan data transaksi ke dalam tabel transaksi
-        if ($count_kursi == 0) {
-            $query = "INSERT INTO transaksi (tanggal_transaksi, no_kursi, jumlah_pembelian, total, no_tiket, id_user, id_sesi) 
-                    VALUES (:tanggal_transaksi, :no_kursi, :jumlah_pembelian, :total, :no_tiket, :id_user, :id_sesi)";
-            $this->db->query($query);
-            $this->db->binds('tanggal_transaksi', date('Y-m-d'));
-            $this->db->binds('no_kursi', $data['no_kursi']);
-            $this->db->binds('jumlah_pembelian', $data['jumlah_tiket']);
-            $this->db->binds('total', $total_harga);
-            $this->db->binds('no_tiket', 'T'.uniqid()); // Generate nomor tiket unik dengan prefix 'T'
-            $this->db->binds('id_user', $_SESSION['user_id']);
-            $this->db->binds('id_sesi', $data['id_sesi']);
-            return $this->db->execute();
-        }
-        else {
-            return false; // Jika nomor kursi sudah terpakai, return false
-        }
+        return $this->db->rowCount();
     }
 
-    
-    
-    
+    public function getTransaksiById($id_transaksi)
+    {
+        $query = "SELECT * FROM transaksi WHERE id = :id";
+        $this->db->query($query);
+        $this->db->binds(':id', $id_transaksi);
+    }
+
+    public function getTransaksiByIdUser($id_user)
+    {
+        $query = "SELECT * FROM transaksi WHERE id_user = :id_user";
+        $this->db->query($query);
+        $this->db->binds('id_user', $id_user);
+
+        return $this->db->resultSet();
+    }
+
+    public function updateStatusTransaksi($idTransaksi, $status)
+    {
+        $query = "UPDATE transaksi SET status_transaksi = :status WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('status', $status);
+        $this->db->bind('id', $idTransaksi);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
 }
