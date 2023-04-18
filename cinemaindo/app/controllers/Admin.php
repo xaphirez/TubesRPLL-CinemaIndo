@@ -145,6 +145,39 @@ class Admin extends Controller{
         $data = [];
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            // Pengecekan apakah file gambar telah diunggah atau tidak
+            if (!isset($_FILES['gambar']) || !is_uploaded_file($_FILES['gambar']['tmp_name'])) {
+                $data['error'] = 'File gambar tidak ditemukan atau terjadi kesalahan saat mengunggah';
+
+                $this->view('templates_admin/header');
+                $this->view('admin/tambah_film', $data);
+                $this->view('templates/footer');
+                return;
+            }
+            
+            // Pengecekan apakah file gambar memiliki ekstensi yang diizinkan
+            $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+            $uploaded_file_extension = strtolower(pathinfo($_FILES['gambar']['name'], PATHINFO_EXTENSION));
+
+            if (!in_array($uploaded_file_extension, $allowed_extensions)) {
+                $data['error'] = 'File yang diunggah harus berupa file gambar dengan ekstensi JPG, JPEG, PNG, atau GIF.';
+                $this->view('templates_admin/header');
+                $this->view('admin/tambah_film', $data);
+                $this->view('templates/footer');
+                return;
+            }
+            
+            // Pengecekan apakah file gambar melebihi ukuran yang diizinkan
+            $max_file_size = 40 * 1024 * 1024; // ukuran maksimal file dalam byte (40 MB)
+            
+            if ($_FILES['gambar']['size'] > $max_file_size) {
+                $data['error'] = 'Ukuran file gambar melebihi batas maksimal 40 MB.';
+                $this->view('templates_admin/header');
+                $this->view('admin/tambah_film', $data);
+                $this->view('templates/footer');
+                return;
+            }
 
             $gambar = $_FILES['gambar']['name'];
             $gambar_tmp = $_FILES['gambar']['tmp_name'];
@@ -162,8 +195,8 @@ class Admin extends Controller{
 
             $adminModel = $this->model('Admin_model');
             if ($adminModel->addMovie($data)) {
-            // redirect ke halaman login
-                header('Location: ' . BASEURL . '/admin/index');
+                // redirect ke halaman login
+                header('Location: ' . BASEURL . '/admin/tambah_film');
                 exit;
             } else {
                 $data['error'] = 'Gagal mendaftar pengguna';
@@ -171,8 +204,8 @@ class Admin extends Controller{
         }
         
         $this->view('templates_admin/header');
-        $this->view('admin/tambah_film');
+        $this->view('admin/tambah_film', $data);
         $this->view('templates/footer');
-        
     }
+
 }

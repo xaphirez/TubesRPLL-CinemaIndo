@@ -28,6 +28,20 @@ class Customer_model{
         
     }
 
+    public function checkEmail($email)
+    {
+        $query = "SELECT * FROM user WHERE email = :email";
+        $this->db->query($query);
+        $this->db->binds(':email', $email);
+        $this->db->single();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getUserByEmail($email)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email=:email');

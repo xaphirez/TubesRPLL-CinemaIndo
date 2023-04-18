@@ -77,28 +77,41 @@ class Customer extends Controller{
     public function regis()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $data = [
-            'nama' => $_POST['nama'],
-            'email' => $_POST['email'],
-            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-            'telepon' => $_POST['telepon']       
-        ];
+            $nama = $_POST['nama'];
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $telepon = $_POST['telepon'];
 
-        // insert data pengguna ke database
-        $customerModel = $this->model('Customer_model');
-        if ($customerModel->registerUser($data)) {
-            // redirect ke halaman login
-            header('Location: ' . BASEURL . '/customer/login');
-            exit;
-        } else {
-            $data['error'] = 'Gagal mendaftar pengguna';
+            // Query ke database untuk memeriksa apakah email sudah ada atau belum
+            $customerModel = $this->model('Customer_model');
+            $result = $customerModel->checkEmail($email);
+
+            if ($result) {
+                // Jika email sudah ada dalam database, tampilkan pesan error
+                $data['error'] = 'Email sudah terdaftar';
+            } else {
+                // Jika email belum ada dalam database, insert data pengguna ke database
+                $data = [
+                    'nama' => $nama,
+                    'email' => $email,
+                    'password' => $password,
+                    'telepon' => $telepon
+                ];
+                if ($customerModel->registerUser($data)) {
+                    // redirect ke halaman login
+                    header('Location: ' . BASEURL . '/customer/login');
+                    exit;
+                } else {
+                    $data['error'] = 'Gagal mendaftar pengguna';
+                }
+            }
         }
-    }
 
         $this->view('templates/header');
         $this->view('customer/register', $data);
         $this->view('templates/footer');
     }
+
     
     public function profile()
     {
