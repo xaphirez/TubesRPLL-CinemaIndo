@@ -1,5 +1,5 @@
 <div class="bg-secondary">
-    <div class="position-relative  ">
+    <div class="position-relative">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <?php $nowPlayingChuncks = array_chunk($data['nowPlayings'], 3); ?>
@@ -7,8 +7,8 @@
                 <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>">
                     <div class="row">
                         <?php foreach ($nowPlayingChunck as $nowPlaying) : ?>
-                        <div class="col-md-4">
-                            <div class="card">
+                        <div class="col-md-4 pt-4 mb-4">
+                            <div class="card" style="border-radius: 1rem;">
                                 <img src="data:image/jpeg;base64,<?= base64_encode($nowPlaying['gambar']) ?>"
                                     class="card-img-top" alt="<?= $nowPlaying['nama_film'] ?>" width="700" height="700">
                                 <div class="card-body">
