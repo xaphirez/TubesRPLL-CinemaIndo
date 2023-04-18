@@ -37,7 +37,7 @@ class Admin extends Controller{
                         session_start();
                     }
                     
-                    $_SESSION['id_admin'] = $admin['id_admin'];
+                    $_SESSION['id'] = $admin['id'];
                     $_SESSION['email_admin'] = $admin['email_admin'];
                     $_SESSION['nama_admin'] = $admin['nama_admin'];
 

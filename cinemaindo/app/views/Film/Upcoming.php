@@ -6,8 +6,8 @@
             <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>">
                 <div class="row">
                     <?php foreach ($upcomingChunck as $upcoming) : ?>
-                    <div class="col-md-4">
-                        <div class="card">
+                    <div class="col-md-4 pt-4 mb-4">
+                        <div class="card" style="border-radius: 1rem;">
                             <img src="data:image/jpeg;base64,<?= base64_encode($upcoming['gambar']) ?>"
                                 class="card-img-top" alt="<?= $upcoming['nama_film'] ?>" width="700" height="700">
                             <div class="card-body">

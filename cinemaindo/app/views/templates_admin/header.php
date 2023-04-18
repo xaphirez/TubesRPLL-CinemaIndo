@@ -1,14 +1,16 @@
 <?php
-    // periksa apakah session id_admin telah diset atau belum
-    if (session_status() === PHP_SESSION_ACTIVE) {
-    session_abort();
-    }
+    session_unset();
+    session_destroy();
     session_name("admin_session");
-    if (isset($_SESSION['id_admin'])) {
+    // periksa apakah session id_admin telah diset atau belum
+
+    if (isset($_SESSION['id'])) {
         $is_logged_in = true;
     } else {
         $is_logged_in = false;
     }
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
