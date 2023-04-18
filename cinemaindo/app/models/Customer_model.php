@@ -3,6 +3,14 @@
 class Customer_model{
     private $table = 'user';
     private $db;
+    private static $instance = null;
+
+    public static function getInstance() {
+        if (!self::$instance) {
+            self::$instance = new Customer_model();
+        }
+        return self::$instance;
+    }
 
     public function __construct()
     {
