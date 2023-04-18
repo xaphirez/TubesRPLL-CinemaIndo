@@ -29,13 +29,6 @@ class Transaksi_model{
         return $this->db->rowCount();
     }
 
-    public function getTransaksiById($id_transaksi)
-    {
-        $query = "SELECT * FROM transaksi WHERE id = :id";
-        $this->db->query($query);
-        $this->db->binds(':id', $id_transaksi);
-    }
-
     public function getTransaksiByIdUser($id_user)
     {
         $query = "SELECT * FROM transaksi WHERE id_user = :id_user";
@@ -45,15 +38,31 @@ class Transaksi_model{
         return $this->db->resultSet();
     }
 
-    public function updateStatusTransaksi($idTransaksi, $status)
+    // Method untuk mengambil data transaksi berdasarkan ID transaksi
+    public function getTransaksiById($id)
     {
-        $query = "UPDATE transaksi SET status_transaksi = :status WHERE id = :id";
+        $query = "SELECT * FROM transaksi WHERE id = :id";
         $this->db->query($query);
-        $this->db->bind('status', $status);
-        $this->db->bind('id', $idTransaksi);
+        $this->db->bind('id', $id);
+        return $this->db->single();
+    }
 
+    // Method untuk mengupdate status transaksi menjadi 'lunas'
+    public function updateStatusTransaksi($id)
+    {
+        $query = "UPDATE transaksi SET status_transaksi = 'lunas' WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
         $this->db->execute();
-        return $this->db->rowCount();
+    }
+
+    public function getTransaksiByUser($idUser) {
+        $query = "SELECT * FROM transaksi WHERE id_user = :id_user ORDER BY tanggal_transaksi DESC";
+        $this->db->query($query);
+        $this->db->binds(':id_user', $idUser);
+        
+        $this->db->execute();
+        return $this->db->resultSet();
     }
 
 }
