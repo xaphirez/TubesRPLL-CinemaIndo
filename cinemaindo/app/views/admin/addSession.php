@@ -1,13 +1,12 @@
-<div class="bg-secondary vh-100">
-    <div class="container pt-3 p text-center h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+<div class="bg-secondary">
+    <div class="container pt-3 p text-center">
+        <div class="row d-flex justify-content-center align-items-center">
             <div class="col-xl-4">
-                <div class="card p-3 bg-dark text-light" style="border-radius: 1rem;">
+                <div class="card p-3 mb-3 bg-dark text-light" style="border-radius: 1rem;">
                     <div class="card-body-register text-center">
                         <img src="<?= BASEURL; ?>/img/Cindo.png" alt="Cinema Indo" width="100"
                             class="rounded-circle img-thumbnail shadow-sm mb-3">
-                        <h2 class="card-title text-center">A D D</h2>
-                        <h2 class="card-title text-center">S E S S I O N</h2>
+                        <h2 class="card-title text-center">Tambah Sesi</h2>
                     </div>
                     <div class="container">
                         <form action="<?= BASEURL; ?>/admin/addSession" method="POST">
@@ -63,6 +62,5 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>
