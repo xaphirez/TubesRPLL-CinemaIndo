@@ -30,10 +30,12 @@ class Admin extends Controller{
             // cek apakah email dan password sesuai dengan data di database
             $adminModel = $this->model('Admin_model');
             $admin = $adminModel->getUserByEmail($email);
+            
             if ($admin) {
                 if (password_verify($password, $admin['password_admin'])) {
                     // mulai sesi jika belum ada sesi yang aktif
                     if (session_status() == PHP_SESSION_NONE) {
+                        session_name("admin_session");
                         session_start();
                     }
                     
@@ -136,5 +138,41 @@ class Admin extends Controller{
         $this->view('templates_admin/header');
         $this->view('admin/addSession', $data);
         $this->view('templates/footer');
+    }
+
+    public function tambah_film()
+    {
+        $data = [];
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $gambar = $_FILES['gambar']['name'];
+            $gambar_tmp = $_FILES['gambar']['tmp_name'];
+            move_uploaded_file($gambar_tmp, 'gambar/' . $gambar);
+            
+            $data = [
+                'namaFilm' => $_POST['nama_film'],
+                'genre' => $_POST['genre'],
+                'durasi' => $_POST['durasi'],
+                'sinopsis' => $_POST['sinopsis'],
+                'rating' => $_POST['rating'],
+                'gambar' => $gambar,
+                'status' => $_POST['status'],
+            ];
+
+            $adminModel = $this->model('Admin_model');
+            if ($adminModel->addMovie($data)) {
+            // redirect ke halaman login
+                header('Location: ' . BASEURL . '/admin/index');
+                exit;
+            } else {
+                $data['error'] = 'Gagal mendaftar pengguna';
+            }
+        }
+        
+        $this->view('templates_admin/header');
+        $this->view('admin/tambah_film');
+        $this->view('templates/footer');
+        
     }
 }
