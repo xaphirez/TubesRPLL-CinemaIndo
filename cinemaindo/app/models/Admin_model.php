@@ -41,4 +41,23 @@ class Admin_model{
         return $this->db->resultSet()[0];
     }
 
+    public function addMovie($data) {
+        $query = "INSERT INTO film
+                    VALUES
+                    ('',:nama_film, :genre, :durasi, :sinopsis, :rating, :gambar, :status)";
+
+        $this->db->query($query);
+        $this->db->binds('nama_film', $data['namaFilm']);
+        $this->db->binds('genre', $data['genre']);
+        $this->db->binds('durasi', $data['durasi']);
+        $this->db->binds('sinopsis', $data['sinopsis']);
+        $this->db->binds('rating', $data['rating']);
+        $this->db->binds('gambar', $data['gambar']);
+        $this->db->binds('status', $data['status']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
 }
