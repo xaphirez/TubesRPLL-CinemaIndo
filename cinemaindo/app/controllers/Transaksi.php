@@ -63,36 +63,23 @@ class Transaksi extends Controller{
         }  
     }
 
-    public function pembayaran()
-    {
-        $transaksiModel = $this->model('Transaksi_model');
-        $dataTransaksi = $transaksiModel->getTransaksiByIdUser($_SESSION['id_user']);        
-            
-        $data = [
-            'judul' => 'Pembayaran',
-            'data_transaksi' => $dataTransaksi
-        ];   
+    public function pembayaran($transaksiId)
+    {   
+        $transaksi = $this->model('Transaksi_model')->getTransaksiById($transaksiId);
 
+        $sesi = $this->model('Sesi_model')->getSesiByID($transaksi['id_sesi']);
+        $film = $this->model('Film_model')->getFilmDetailById($sesi['id_film']);
+    
+        $data = [
+            'nama_film' => $film['nama_film'],
+            'waktu_mulai' => $sesi['waktu_mulai'],
+            'no_kursi' => $transaksi['no_kursi'],
+            'harga' => $transaksi['total'],
+            'id_transaksi' => $transaksi['id']
+        ];
 
         $this->view('templates/header', $data);
         $this->view('transaksi/pembayaran', $data);
         $this->view('templates/footer');
-    }
-
-    public function proses_pembayaran()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Ambil data transaksi berdasarkan id_transaksi yang dikirimkan dari form
-            $transaksiModel = $this->model('Transaksi_model');
-            $transaksi = $transaksiModel->getTransaksiById($_POST['id_transaksi']);
-
-            // Jika transaksi ditemukan dan statusnya masih pending, maka ubah status transaksi menjadi sukses
-            if ($transaksi && $transaksi['status_transaksi'] == 'pending') {
-                $transaksiModel->updateStatusTransaksi($transaksi['id'], 'done');
-                
-                header('Location: ' . BASEURL . '/transaksi/pembayaran');
-                exit();
-            }
-        }
     }
 }

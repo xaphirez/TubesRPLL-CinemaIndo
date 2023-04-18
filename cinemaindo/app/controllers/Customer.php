@@ -111,14 +111,6 @@ class Customer extends Controller{
         $this->view('templates/footer');
     }
 
-    public function History()
-    {
-        $data['judul'] = 'History';
-        $this->view('templates/header', $data);
-        $this->view('customer/History');
-        $this->view('templates/footer');
-    }
-
     public function editprofil()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -153,5 +145,25 @@ class Customer extends Controller{
         session_destroy();
         header('Location: ' . BASEURL . '/customer/login');
         exit;
+    }
+
+    public function History()
+    {
+        if (!isset($_SESSION['id_user'])) {
+            header('Location: ' . BASEURL . '/login');
+            exit;
+        }
+        $idUser = $_SESSION['id_user'];
+        $transaksi = $this->model('Transaksi_model')->getTransaksiByUser($idUser);
+        var_dump($idUser);
+
+        $data = [
+            'judul' => 'History',
+            'transaksi' => $transaksi
+        ];
+
+        $this->view('templates/header', $data);
+        $this->view('customer/History', $data);
+        $this->view('templates/footer');
     }
 }
