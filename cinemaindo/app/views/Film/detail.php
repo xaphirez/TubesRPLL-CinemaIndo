@@ -1,5 +1,5 @@
 <div class="container">
-	<?php
+    <?php
         echo "<h1>" . $data['film']['nama_film'] . "</h1>";
         echo "<img src='data:image/jpeg;base64," . base64_encode($data['film']['gambar']) . "' width='300' height='450'><br><br>";
         echo "<strong>Genre:</strong> " . $data['film']['genre'] . "<br>";
@@ -17,6 +17,6 @@
             $link_kembali = BASEURL . '/film/upcoming';
         }
     ?>
-	<br>
-	<a href="<?php echo $link_kembali; ?>" class="btn btn-primary">Kembali</a>
+    <br>
+    <a href="<?php echo $link_kembali; ?>" class="btn btn-primary">Kembali</a>
 </div>

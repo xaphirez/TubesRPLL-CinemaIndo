@@ -97,12 +97,6 @@ class Admin extends Controller{
 
     public function addSession()
     {
-        // Cek apakah user sudah login atau belum
-        // if (!isset($_SESSION['user'])) {
-        //     header('Location: ' . BASEURL . '/auth/login');
-        //     exit;
-        // }
-
         // Panggil model Film dan Screen
         $filmModel = $this->model('Film_model');
         $screenModel = $this->model('Screen_model');
